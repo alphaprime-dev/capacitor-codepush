@@ -30,7 +30,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@capacitor-community/http@^1.0.0":
+"@capacitor-community/http@^1.4.1":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/@capacitor-community/http/-/http-1.4.1.tgz#005f51c2129f48bff75c46b8679a2fff57ced5a9"
   integrity sha512-+pCkBXrwfm97UfjOgjV950H/qZ8SE36Mrcb46BlL1ps3VIsGuIO+AulL8GqTC6LewheRVtGJpRspNtneXQotNA==
