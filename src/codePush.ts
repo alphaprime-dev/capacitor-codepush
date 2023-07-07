@@ -416,9 +416,9 @@ class CodePush implements CodePushCapacitorPlugin {
       localPackage.install(syncOptions).then(onInstallSuccess, onError);
     };
 
-    const downloadAndInstallUpdate = (remotePackage: RemotePackage) => {
+    const downloadAndInstallUpdate = async (remotePackage: RemotePackage) => {
       syncCallback && syncCallback(null, SyncStatus.DOWNLOADING_PACKAGE);
-      remotePackage.download(downloadProgress).then(onDownloadSuccess, onError);
+      await remotePackage.download(downloadProgress).then(onDownloadSuccess, onError);
     };
 
     const onUpdate = async (remotePackage: RemotePackage) => {
@@ -448,7 +448,7 @@ class CodePush implements CodePushCapacitorPlugin {
                   buttonTitle: dlgOpts.mandatoryContinueButtonLabel
                 }
               );
-              downloadAndInstallUpdate(remotePackage);
+              await downloadAndInstallUpdate(remotePackage);
             } else {
               /* Confirm update with user */
               const message = dlgOpts.appendReleaseDescription ?
@@ -464,7 +464,7 @@ class CodePush implements CodePushCapacitorPlugin {
 
               if (confirmResult.value === true) {
                 /* Install */
-                downloadAndInstallUpdate(remotePackage);
+                await downloadAndInstallUpdate(remotePackage);
               } else {
                 /* Cancel */
                 CodePushUtil.logMessage("User cancelled the update.");
@@ -473,7 +473,7 @@ class CodePush implements CodePushCapacitorPlugin {
             }
           } else {
             /* No user interaction */
-            downloadAndInstallUpdate(remotePackage);
+            await downloadAndInstallUpdate(remotePackage);
           }
         }
       }
